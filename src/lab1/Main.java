@@ -12,7 +12,7 @@ public class Main {
         System.out.println("3. Включить/выключить подключение к базе данных");
 
         while (true) {
-            System.out.println("Статус базы данных: " + (db.status ? "Подключена" : "Отключена"));
+            System.out.println("\nСтатус базы данных: " + (db.status ? "Подключена" : "Отключена"));
             System.out.print("Выберите действие: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -25,6 +25,7 @@ public class Main {
                     for (Estate estate : Estates.getInstance().getEstateList()) {
                         System.out.println(estate);
                     }
+                    break;
 
                 case 2:
                     System.out.print("Введите ID: ");
@@ -41,9 +42,11 @@ public class Main {
                     Estates.getInstance().addEstate(new Estate(id, title, price, city));
 
                     db.saveDataToDatabase();
+                    break;
 
                 case 3:
                     db.toggleStatus();
+                    break;
 
                 default:
                     return;
